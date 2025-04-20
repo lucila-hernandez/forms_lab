@@ -4,6 +4,22 @@
 
 <p>Genre creation form.</p>
 
-<!-- TODO: Add a <form> element here and use the form variable to show the labels & fields -->
+
+<form method="POST" action="{{ url_for('main.create_genre') }}">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <legend>Enter a Genre</legend>
+
+        {{ form.name.label }}
+        {{ form.name }}
+        <ul>
+        {% for error in form.name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.submit }}
+    </fieldset>
+</form>
 
 {% endblock %}

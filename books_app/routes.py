@@ -67,14 +67,24 @@ def create_author():
 @main.route('/create_genre', methods=['GET', 'POST'])
 def create_genre():
     # TODO: Make a GenreForm instance
+    genre_form = GenreForm()
 
     # TODO: If the form was submitted and is valid, create a new Genre object
     # and save to the database, then flash a success message to the user and
     # redirect to the homepage
+    if genre_form.validate_on_submit():
+        new_genre = Genre(
+            name = genre_form.name.data
+        )
+
 
     # TODO: Send the form object to the template, and use it to render the form
     # fields
-    return render_template('create_genre.html')
+        db.session.add(new_genre)
+        db.session.commit()
+        flash('New genre was creates successfully')
+        return redirect(url_for('main.homepage'))
+    return render_template('create_genre.html', form=genre_form)
 
 @main.route('/create_user', methods=['GET', 'POST'])
 def create_user():
