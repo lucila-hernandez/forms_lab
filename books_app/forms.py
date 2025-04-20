@@ -33,10 +33,6 @@ class AuthorForm(FlaskForm):
     # - a submit button
     submit = SubmitField('Submit')
 
-    # STRETCH CHALLENGE: Add more fields here as well as in `models.py` to
-    # collect more information about the author, such as their birth date,
-    # country, etc.
-
 
 class GenreForm(FlaskForm):
     """Form to create a genre."""
